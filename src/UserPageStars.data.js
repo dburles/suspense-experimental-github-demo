@@ -5,8 +5,7 @@ import { fetchUserStars } from './api';
 // Note that these dependencies don't *block* rendering of parent content.
 // For example, we can show UserPage without waiting for these to load.
 
-export default function prepareUserPageStars(userId) {
-  return {
-    stars: fetchUserStars(userId),
-  }
+export default function prepareUserPageStars([, userId]) {
+  // If there were more requests here, Promise.all
+  return fetchUserStars(userId);
 }
