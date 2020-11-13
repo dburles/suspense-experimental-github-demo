@@ -19,9 +19,10 @@ export function fetchUserFollowing([, userId]) {
 }
 
 async function getFromGitHub(url) {
-  const response = await fetch('https://api.github.com' + url);
+  const response = await fetch("https://api.github.com" + url);
+
   if (response.status !== 200) {
-    throw new Error('GitHub API returned Error ' + response.status);
+    throw new Error("GitHub API returned Error " + response.status);
   }
   return response.json();
 }
