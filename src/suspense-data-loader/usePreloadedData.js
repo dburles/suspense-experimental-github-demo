@@ -32,6 +32,8 @@ export default function usePreloadedData(reference, userOptions = {}) {
 
   useEffect(() => {
     if (reference.loadOnMount && options.reloadOnMount !== false) {
+      console.log('loadOnMount!');
+
       reference.load();
     }
     return () => {

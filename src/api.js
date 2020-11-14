@@ -20,6 +20,7 @@ export function fetchUserFollowing([, userId]) {
 
 async function getFromGitHub(url) {
   const response = await fetch('https://api.github.com' + url);
+  console.log('fetch', url);
 
   if (response.status !== 200) {
     throw new Error('GitHub API returned Error ' + response.status);

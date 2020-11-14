@@ -12,7 +12,10 @@ import dataCache from './dataCache';
 
 export default function prepareRepoPage(repoId) {
   return {
-    repo: dataCache.load(['fetchRepo', repoId], fetchRepo),
-    contribs: dataCache.load(['fetchRepoContribs', repoId], fetchRepoContribs),
+    repo: dataCache.preload(['fetchRepo', repoId], fetchRepo),
+    contribs: dataCache.preload(
+      ['fetchRepoContribs', repoId],
+      fetchRepoContribs
+    ),
   };
 }

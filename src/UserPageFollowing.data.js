@@ -8,7 +8,7 @@ import dataCache from './dataCache';
 
 export default function prepareUserPageFollowing(userId) {
   return {
-    following: dataCache.load(
+    following: dataCache.preload(
       ['fetchUserFollowing', userId],
       fetchUserFollowing
     ),
