@@ -34,8 +34,12 @@ export default function createDataCache(userOptions = defaultOptions) {
       }
     },
 
+    preload(key, asyncFn) {
+      return dataCache.get(key) || dataCache.load(key, asyncFn);
+    },
+
     load(key, asyncFn) {
-      return dataCache.get(key) || dataLoader(key, asyncFn, dataCache);
+      return dataLoader(key, asyncFn, dataCache);
     },
 
     reset() {
