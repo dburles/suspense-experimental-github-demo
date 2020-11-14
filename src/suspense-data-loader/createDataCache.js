@@ -1,5 +1,5 @@
-import dataLoader from './lib/dataLoader.js';
-import serializeKey from './lib/serializeKey.js';
+import dataLoader from "./lib/dataLoader.js";
+import serializeKey from "./lib/serializeKey.js";
 
 const defaultOptions = { maxEntries: 10000 };
 
@@ -14,7 +14,7 @@ const defaultOptions = { maxEntries: 10000 };
 export default function createDataCache(userOptions = defaultOptions) {
   const options = {
     ...defaultOptions,
-    ...userOptions,
+    ...userOptions
   };
 
   const dataCache = {
@@ -34,13 +34,23 @@ export default function createDataCache(userOptions = defaultOptions) {
       }
     },
 
+    preload(key, asyncFn) {
+      const reference = dataCache.get(key);
+      if (reference) {
+        console.log("found ref", reference);
+
+        return reference;
+      }
+      return dataCache.load(key, asyncFn);
+    },
+
     load(key, asyncFn) {
       return dataLoader(key, asyncFn, dataCache);
     },
 
     reset() {
       dataCache.cache = new Map();
-    },
+    }
   };
 
   return dataCache;

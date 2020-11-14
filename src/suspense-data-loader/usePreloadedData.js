@@ -1,5 +1,5 @@
-import { useEffect, useReducer, useState } from 'react';
-import { REJECTED, RESOLVED } from './lib/dataLoader.js';
+import { useEffect, useReducer, useState } from "react";
+import { REJECTED, RESOLVED } from "./lib/dataLoader.js";
 
 /**
  * usePreloadedData Options
@@ -32,6 +32,8 @@ export default function usePreloadedData(reference, userOptions = {}) {
 
   useEffect(() => {
     if (reference.loadOnMount && options.reloadOnMount !== false) {
+      console.log("loadOnMount!");
+
       reference.load();
     }
     return () => {
