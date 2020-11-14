@@ -30,7 +30,7 @@ export default function UserPage({ user, following, stars }) {
 }
 
 function UserDetails({ user, stars }) {
-  const json = usePreloadedData(user);
+  const json = usePreloadedData(user, { reloadOnMount: false });
   return (
     <div>
       <h1>{json.name}</h1>

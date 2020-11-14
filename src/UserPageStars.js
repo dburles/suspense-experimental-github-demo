@@ -3,7 +3,7 @@ import { Link } from './router';
 import { usePreloadedData } from './suspense-data-loader';
 
 export default function UserPageStars({ stars }) {
-  const json = usePreloadedData(stars);
+  const json = usePreloadedData(stars, { reloadOnMount: false });
   return (
     <div>
       <h2>Starred Repos</h2>

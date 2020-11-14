@@ -6,14 +6,10 @@ export default function Spinner({ isBig }) {
     className += ' BigSpinner';
   }
   return (
-    <span
-      aria-busy="true"
-      className={className}
-    >
-      <span
-        className="Spinner"
-        aria-hidden="true"
-      >🌀</span>
+    <span aria-busy="true" className={className}>
+      <span className="Spinner" aria-hidden="true">
+        🌀
+      </span>
     </span>
   );
 }

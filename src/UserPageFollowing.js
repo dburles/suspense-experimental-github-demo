@@ -3,7 +3,7 @@ import { Link } from './router';
 import { usePreloadedData } from './suspense-data-loader';
 
 export default function UserPageFollowing({ following }) {
-  const json = usePreloadedData(following);
+  const json = usePreloadedData(following, { reloadOnMount: false });
   return (
     <div>
       <h2>Following</h2>

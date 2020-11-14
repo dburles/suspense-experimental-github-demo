@@ -17,12 +17,12 @@ export default function RepoPage({ repo, contribs }) {
 }
 
 function RepoDetails({ repo }) {
-  const json = usePreloadedData(repo);
+  const json = usePreloadedData(repo, { reloadOnMount: false });
   return <h1>{json.name}</h1>;
 }
 
 function RepoContributors({ contribs }) {
-  const json = usePreloadedData(contribs);
+  const json = usePreloadedData(contribs, { reloadOnMount: false });
   return (
     <div>
       <h2>Contributors</h2>
