@@ -8,6 +8,6 @@ import dataCache from './dataCache';
 
 export default function prepareUserPageStars([, userId]) {
   return {
-    stars: dataCache.preload(['fetchUserStars', userId], fetchUserStars)
+    stars: dataCache.load(['fetchUserStars', userId], fetchUserStars),
   };
 }

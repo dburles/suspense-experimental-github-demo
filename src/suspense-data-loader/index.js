@@ -1,10 +1,12 @@
 /**
+ * The cache key.
  * @kind typedef
  * @name CacheKey
  * @type {string|Array<string|number>}
  */
 
 /**
+ * Loads data into the cache.
  * @kind typedef
  * @name DataCacheLoad
  * @type {function}
@@ -13,6 +15,16 @@
  */
 
 /**
+ * Returns cached entry if found, otherwise calls asyncFn and loads data into the cache.
+ * @kind typedef
+ * @name DataCachePreload
+ * @type {function}
+ * @param {CacheKey} key A cache key.
+ * @param {function} asyncFn A function that returns a Promise.
+ */
+
+/**
+ * Loads data into this cache reference.
  * @kind typedef
  * @name UseDataLoaderLoad
  * @type {function}

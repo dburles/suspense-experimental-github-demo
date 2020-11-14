@@ -1,5 +1,5 @@
-import { fetchRepo, fetchRepoContribs } from "./api";
-import dataCache from "./dataCache";
+import { fetchRepo, fetchRepoContribs } from './api';
+import dataCache from './dataCache';
 
 // Data dependencies are a separate file tree colocated with the component tree.
 // Tools like Relay automate creating these files, but here we'll do it by hand.
@@ -12,10 +12,10 @@ import dataCache from "./dataCache";
 
 export default function prepareRepoPage(repoId) {
   return {
-    repo: dataCache.preload(["fetchRepo", repoId], fetchRepo),
-    contribs: dataCache.preload(
-      ["fetchRepoContribs", repoId],
+    repo: dataCache.load(['fetchRepo', repoId], fetchRepo),
+    contribs: dataCache.load(
+      ['fetchRepoContribs', repoId],
       fetchRepoContribs
-    )
+    ),
   };
 }

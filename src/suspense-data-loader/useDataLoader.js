@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import DataCacheContext from './DataCacheContext.js';
+import dataLoader from './lib/dataLoader.js';
 import serializeKey from './lib/serializeKey.js';
 
 /**
@@ -26,7 +27,7 @@ export default function useDataLoader(key) {
   const loadRef = useRef(load);
 
   function load(asyncFn) {
-    setReference(dataCache.load(keyRef.current, asyncFn));
+    setReference(dataLoader(key, asyncFn, dataCache));
   }
 
   useEffect(() => {

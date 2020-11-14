@@ -13,7 +13,7 @@ import dataCache from './dataCache';
 // and see the bundle and data requests go out in parallel.
 
 export default function prepareUserPage(userId) {
-  const user = dataCache.preload(['fetchUser', userId], fetchUser);
+  const user = dataCache.load(['fetchUser', userId], fetchUser);
   const { stars } = prepareUserPageStars(userId);
   const { following } = prepareUserPageFollowing(userId);
 
