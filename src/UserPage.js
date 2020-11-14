@@ -1,11 +1,12 @@
 import React, { useLayoutEffect, Suspense, SuspenseList } from 'react';
 import UserPageStars from './UserPageStars';
 import UserPageFollowing from './UserPageFollowing';
+import { usePreloadedData } from './suspense-data-loader';
 
 export default function UserPage({ user, following, stars }) {
   useLayoutEffect(() => {
     // A proper router would help you with this
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }, [user]);
   return (
     <div>
@@ -29,11 +30,11 @@ export default function UserPage({ user, following, stars }) {
 }
 
 function UserDetails({ user, stars }) {
-  const json = user.read();
+  const json = usePreloadedData(user, { reloadOnMount: false });
   return (
     <div>
       <h1>{json.name}</h1>
       <h2>{json.login}</h2>
     </div>
-  )
+  );
 }

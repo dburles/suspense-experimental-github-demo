@@ -1,5 +1,16 @@
-import React, { createContext, lazy, useState, useCallback, useContext, useEffect, useTransition } from 'react';
-import { unstable_runWithPriority, unstable_UserBlockingPriority } from 'scheduler';
+import React, {
+  createContext,
+  lazy,
+  useState,
+  useCallback,
+  useContext,
+  useEffect,
+  useTransition,
+} from 'react';
+import {
+  unstable_runWithPriority,
+  unstable_UserBlockingPriority,
+} from 'scheduler';
 import Spinner from './Spinner';
 
 if (window.location.pathname === '/') {
@@ -69,7 +80,7 @@ export default function createRouter(routes) {
         unstable_runWithPriority(unstable_UserBlockingPriority, () => {
           // Handle the browser Back Button.
           startTransition(() => {
-            navigate(window.location.pathname, false)
+            navigate(window.location.pathname, false);
           });
         });
       };
@@ -96,7 +107,7 @@ export default function createRouter(routes) {
 
   function Link({ url, children }) {
     const navigate = useContext(RouterContext);
-    const [startTransition, isPending] = useTransition(suspenseConfig)
+    const [startTransition, isPending] = useTransition(suspenseConfig);
 
     function handleClick(e) {
       if (!shouldNavigate(e)) {
@@ -118,7 +129,7 @@ export default function createRouter(routes) {
            * check "Disable Cache" and enable "Slow 3G".
            * Then click on a link and wait 500ms.
            */
-          className={isPending ? "DelayedWaitCursor" : null}
+          className={isPending ? 'DelayedWaitCursor' : null}
         >
           {children}
         </a>
@@ -139,4 +150,4 @@ function shouldNavigate(event) {
     event.button === 0 &&
     !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
   );
-};
+}

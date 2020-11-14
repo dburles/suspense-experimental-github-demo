@@ -1,6 +1,7 @@
 import { fetchUser } from './api';
 import prepareUserPageStars from './UserPageStars.data';
 import prepareUserPageFollowing from './UserPageFollowing.data';
+import dataCache from './dataCache';
 
 // Data dependencies are a separate file tree colocated with the component tree.
 // Tools like Relay automate creating these files, but here we'll do it by hand.
@@ -12,8 +13,9 @@ import prepareUserPageFollowing from './UserPageFollowing.data';
 // and see the bundle and data requests go out in parallel.
 
 export default function prepareUserPage(userId) {
-  const user = fetchUser(userId);
+  const user = dataCache.load(['fetchUser', userId], fetchUser);
   const { stars } = prepareUserPageStars(userId);
   const { following } = prepareUserPageFollowing(userId);
+
   return { user, stars, following };
 }
